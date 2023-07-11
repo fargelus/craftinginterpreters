@@ -1,4 +1,4 @@
-package com.craftinginterpeters.lox;
+package com.craftinginterpreters.lox;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+
 public class Lox {
     static boolean hadError = false;
 
@@ -15,7 +16,7 @@ public class Lox {
         if (args.length > 1) {
             System.out.println("Usage: jlox [script]");
             System.exit(64);
-        } else if (args.length == 0) {
+        } else if (args.length == 1) {
             runFile(args[0]);
         } else {
             runPrompt();
@@ -52,7 +53,7 @@ public class Lox {
         }
     }
 
-    private static void error(int line, String message) {
+    static void error(int line, String message) {
         report(line, "", message);
     }
 

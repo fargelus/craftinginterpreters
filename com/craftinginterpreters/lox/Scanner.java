@@ -7,6 +7,7 @@ import java.util.Map;
 
 import static com.craftinginterpreters.lox.TokenType.*;
 
+
 class Scanner {
     private final String source;
     private final List<Token> tokens = new ArrayList<>();
@@ -50,7 +51,7 @@ class Scanner {
     }
 
     private boolean isAtEnd() {
-        return current >= source.length;
+        return current >= source.length();
     }
 
     private void scanToken() {
