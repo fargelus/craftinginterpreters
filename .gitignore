@@ -1,1 +1,3 @@
 com/craftinginterpreters/lox/*.class
+com/craftinginterpreters/tool/*.class
+com/craftinginterpreters/TODO
