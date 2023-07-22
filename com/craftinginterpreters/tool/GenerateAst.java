@@ -67,5 +67,6 @@ public class GenerateAst {
         }
 
         writer.println("  }");
+        writer.println();
     }
 }
