@@ -11,6 +11,7 @@ import java.util.List;
 
 public class Lox {
     static boolean hadError = false;
+    private static final String EXIT_PROMPT_CMD = "exit";
 
     public static void main(String[] args) throws IOException {
         if (args.length > 1) {
@@ -37,7 +38,7 @@ public class Lox {
         for(;;) {
             System.out.print("> ");
             String line = reader.readLine();
-            if (line == null) break;
+            if (line == null || line.equals(EXIT_PROMPT_CMD)) break;
             run(line);
             hadError = false;
         }
