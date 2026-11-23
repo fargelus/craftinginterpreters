@@ -11,6 +11,7 @@ import java.util.List;
 
 public class Lox {
     static boolean hadError = false;
+    static boolean hadRuntimeError = false;
     private static final String EXIT_PROMPT_CMD = "exit";
 
     public static void main(String[] args) throws IOException {
@@ -29,6 +30,7 @@ public class Lox {
         run(new String(bytes, Charset.defaultCharset()));
 
         if(hadError) System.exit(65);
+        if (hadRuntimeError) System.exit(70);
     }
 
     private static void runPrompt() throws IOException {
@@ -53,6 +55,11 @@ public class Lox {
         if (hadError) return;
 
         System.out.println(new AstPrinter().print(expression));
+    }
+
+    static void runtimeError(RuntimeError error) {
+        System.err.println(error.getMessage() + "\n[line " + error.token.line + "]");
+        hadRuntimeError = true;
     }
 
     static void error(int line, String message) {
