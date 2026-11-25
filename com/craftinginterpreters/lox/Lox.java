@@ -10,6 +10,7 @@ import java.util.List;
 
 
 public class Lox {
+    private static final Interpreter interpreter = new Interpreter();
     static boolean hadError = false;
     static boolean hadRuntimeError = false;
     private static final String EXIT_PROMPT_CMD = "exit";
@@ -54,7 +55,7 @@ public class Lox {
 
         if (hadError) return;
 
-        System.out.println(new AstPrinter().print(expression));
+        interpreter.interpret(expression);
     }
 
     static void runtimeError(RuntimeError error) {
