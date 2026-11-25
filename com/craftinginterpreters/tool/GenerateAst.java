@@ -19,6 +19,11 @@ public class GenerateAst {
             "Literal   : Object value",
             "Unary     : Token operator, Expr right"
         ));
+
+        defineAst(outputDir, "Stmt", Arrays.asList(
+            "Expression : Expr expression",
+            "Print : Expr expression"
+        ));
     }
 
     private static void defineAst(
@@ -40,7 +45,7 @@ public class GenerateAst {
             String fields = type.split(":")[1].trim();
             defineType(writer, baseName, className, fields);
         }
-        
+
         writer.println();
         writer.println("  abstract <R> R accept(Visitor<R> visitor);");
         writer.println("}");
@@ -65,7 +70,7 @@ public class GenerateAst {
         String className, String fieldList) {
         writer.println("  static class " + className + " extends " +
          baseName + " {");
-        
+
         // Constructor.
         writer.println("    " + className + "(" + fieldList + ") {");
 
@@ -77,12 +82,12 @@ public class GenerateAst {
         }
 
         writer.println("    }");
-        
+
         // Visitor pattern
         writer.println();
         writer.println("    @Override");
         writer.println("    <R> R accept(Visitor<R> visitor) {");
-        writer.println("      return visitor.visit" + 
+        writer.println("      return visitor.visit" +
             className + baseName + "(this);");
         writer.println("    }");
 
